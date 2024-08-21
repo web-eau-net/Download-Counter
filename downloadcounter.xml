@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade">
+	<name>PLG_CONTENT_DOWNLOAD_COUNTER</name>
+	<creationDate>Fev 2023</creationDate>
+	<author>web-eau.net</author>
+	<authorEmail>daniel@web-eau.net</authorEmail>
+	<authorUrl>https://web-eau.net/</authorUrl>
+	<copyright>Copyright (C) 2022 - web-eau.net - All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.3.0</version>
+	<description>PLG_CONTENT_DOWNLOAD_COUNTER_XML_DESCRIPTION</description>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.utf8.sql</file>
+			<file driver="mysqli" charset="utf8">install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<files>
+		<filename plugin="downloadcounter">downloadcounter.php</filename>
+        <filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>install.mysql.utf8.sql</filename>
+	</files>
+	
+	<updateservers>
+		<server type="extension" priority="2" name="Plugin Download Counter">https://web-eau.net/files/download-counter/download-counter.xml</server>
+	</updateservers>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_downloadcounter.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_downloadcounter.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.plg_content_downloadcounter.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.plg_content_downloadcounter.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="downfolder" type="folderlist" default="/download" label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_DOWNLOAD_FOLDER" directory="" filter="" exclude="" stripext="" />
+				<field name="link_css" type="text" default="" label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_DOWNLOAD_LINK_CSS_STYLE" description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_DOWNLOAD_LINK_CSS_STYLE_DESC" />
+				<field
+				name="show_file_name"
+				type="radio"
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILE_NAME_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILE_NAME_DESC"
+				class="btn-group btn-group-yesno"
+				default="1"
+				filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+				name="show_download_text"
+				type="radio"
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_DOWNLOAD_TEXT_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_DOWNLOAD_TEXT_DESC"
+				class="btn-group btn-group-yesno"
+				default="1"
+				filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+				name="show_clicks"
+				type="radio"
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_CLICKS_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_CLICKS_DESC"
+				class="btn-group btn-group-yesno"
+				default="1"
+				filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+				name="show_filesize"
+				type="radio"
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILESIZE_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILESIZE_DESC"
+				class="btn-group btn-group-yesno"
+				default="1"
+				filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+				name="show_file_md5hash"
+				type="radio"
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILE_MD5HASH_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_SHOW_FILE_MD5HASH_DESC"
+				class="btn-group btn-group-yesno"
+				default="0"
+				filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field 
+				name="force_download_link_target" 
+				type="list"
+				default="0" 
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_LINK_TARGET_LABEL" 
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_LINK_TARGET_DESC">
+					<option value="0">JOFF</option>
+					<option value="target='_blank' ">PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_LINK_TARGET_BLANK_LABEL</option>
+					<option value="download ">PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_LINK_FORCE_DOWNLOAD_LABEL</option>
+				</field>
+				<field
+				name="download_access_group"
+				type="usergrouplist"
+				default="1" 
+				label="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_DOWNLOAD_ACCESS_GROUP_LABEL"
+				description="PLG_CONTENT_DOWNLOAD_COUNTER_FIELD_DOWNLOAD_ACCESS_GROUP_DESC"
+				multiple="true"
+				filter="int_array"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+	
+</extension>
